@@ -9,8 +9,8 @@ import (
 	boolname "github.com/gomatic/yze-go-boolname"
 )
 
-func TestBooleanNamingIsReported(t *testing.T) {
-	analysistest.Run(t, analysistest.TestData(), boolname.Analyzer, "a")
+func TestBooleanNamingIsReportedAndFixed(t *testing.T) {
+	analysistest.RunWithSuggestedFixes(t, analysistest.TestData(), boolname.Analyzer, "a")
 }
 
 func TestRegistrationIsWellFormed(t *testing.T) {

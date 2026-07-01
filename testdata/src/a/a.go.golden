@@ -28,23 +28,23 @@ func prefixed(canRetry, shouldRun, willStart, featureDisabled bool) bool {
 // with the prefix letters is/has/will but have no boundary, so they are NOT
 // exempted and must each be flagged on their own parameter line.
 func boundary(
-	island bool, // want `boolean island should use an is/has/can/should/will prefix or an Enabled/Disabled suffix`
-	hashed bool, // want `boolean hashed should use an is/has/can/should/will prefix or an Enabled/Disabled suffix`
-	willing bool, // want `boolean willing should use an is/has/can/should/will prefix or an Enabled/Disabled suffix`
+	isIsland bool, // want `boolean island should use an is/has/can/should/will prefix or an Enabled/Disabled suffix`
+	isHashed bool, // want `boolean hashed should use an is/has/can/should/will prefix or an Enabled/Disabled suffix`
+	isWilling bool, // want `boolean willing should use an is/has/can/should/will prefix or an Enabled/Disabled suffix`
 ) {
-	_, _, _ = island, hashed, willing
+	_, _, _ = isIsland, isHashed, isWilling
 }
 
 // toggle exercises boolean parameters, including a blank parameter.
 func toggle(
-	force bool, // want `boolean force should use an is/has/can/should/will prefix or an Enabled/Disabled suffix`
+	isForce bool, // want `boolean force should use an is/has/can/should/will prefix or an Enabled/Disabled suffix`
 	_ bool,
 ) bool {
-	return force
+	return isForce
 }
 
 // query exercises a named boolean result.
-func query() (ready bool) { // want `boolean ready should use an is/has/can/should/will prefix or an Enabled/Disabled suffix`
+func query() (isReady bool) { // want `boolean ready should use an is/has/can/should/will prefix or an Enabled/Disabled suffix`
 	return false
 }
 
@@ -97,39 +97,39 @@ func nestedCollision(
 
 // naked exercises a named result referenced by assignment and a naked return:
 // both the declaration and the assignment must be rewritten.
-func naked() (done bool) { // want `boolean done should use an is/has/can/should/will prefix or an Enabled/Disabled suffix`
-	done = true
+func naked() (isDone bool) { // want `boolean done should use an is/has/can/should/will prefix or an Enabled/Disabled suffix`
+	isDone = true
 	return
 }
 
 // literal exercises a func-literal parameter: the declaration and the body
 // reference must both be rewritten.
 var literal = func(
-	valid bool, // want `boolean valid should use an is/has/can/should/will prefix or an Enabled/Disabled suffix`
+	isValid bool, // want `boolean valid should use an is/has/can/should/will prefix or an Enabled/Disabled suffix`
 ) bool {
-	return valid
+	return isValid
 }
 
 // Prober exercises an interface-method named result: a bodyless signature name
 // has no references, so the rename is a pure declaration edit.
 type Prober interface {
-	Probe() (ok bool) // want `boolean ok should use an is/has/can/should/will prefix or an Enabled/Disabled suffix`
+	Probe() (isOk bool) // want `boolean ok should use an is/has/can/should/will prefix or an Enabled/Disabled suffix`
 }
 
 // Hooks exercises a func-type struct field's parameter: the field name itself is
 // not boolean, but the signature name inside its type is fixable in place.
 type Hooks struct {
 	OnChange func(
-		flag bool, // want `boolean flag should use an is/has/can/should/will prefix or an Enabled/Disabled suffix`
+		isFlag bool, // want `boolean flag should use an is/has/can/should/will prefix or an Enabled/Disabled suffix`
 	)
 }
 
 // accent exercises a multi-byte first rune: the whole rune (not the lead byte)
 // must be upcased, so état becomes isÉtat.
 func accent(
-	état bool, // want `boolean état should use an is/has/can/should/will prefix or an Enabled/Disabled suffix`
+	isÉtat bool, // want `boolean état should use an is/has/can/should/will prefix or an Enabled/Disabled suffix`
 ) bool {
-	return état
+	return isÉtat
 }
 
 // noop exercises a function with no results.
